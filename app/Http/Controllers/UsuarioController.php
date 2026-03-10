@@ -13,6 +13,7 @@ class UsuarioController extends Controller
     public function index()
     {
         $tarefas = Usuario::all("tarefa");
+        return view('home')->with('home', $tarefas);
     }
 
     /**
@@ -20,7 +21,7 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        //
+        return view("cadastro.cadastrarUsuario");
     }
 
     /**
@@ -28,7 +29,14 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuario = new Usuario();
+        $usuario->nome_usuario = $request->nome;
+        $usuario->email_usuario = $request->email;
+        $usuario->senha_usuario = $request->senha;
+        
+        $usuario->save();
+
+        return view("home");
     }
 
     /**

@@ -11,6 +11,6 @@ class Usuario extends Model
 
     protected $table = "usuario";
 
-    public $fillable = ['id_usuario', 'nome_usuario', 'email_usuario', 'senha_usuario'];
+    public $fillable = ['id_usuario', 'nome_usuario', 'email_usuario', 'senha_usuario', 'created_at', 'updated_at'];
 
 }
