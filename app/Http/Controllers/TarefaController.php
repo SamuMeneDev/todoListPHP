@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 use App\Models\Tarefa;
 
@@ -12,8 +13,9 @@ class TarefaController extends Controller
      */
     public function index()
     {
+        $categorias = Categoria::all();
         $tarefas = Tarefa::all();
-        return view("home")->with("tarefas", $tarefas);
+        return view("home")->with("tarefas", $tarefas)->with("categorias", $categorias);
     }
 
     /**
