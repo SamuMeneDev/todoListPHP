@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tarefa;
 use Illuminate\Http\Request;
 
 use App\Models\Usuario;
@@ -35,8 +36,8 @@ class UsuarioController extends Controller
         $usuario->senha_usuario = $request->senha;
         
         $usuario->save();
-
-        return view("home");
+        $tarefas = Tarefa::all();
+        return view("home")->with("tarefas", $tarefas);
     }
 
     /**
