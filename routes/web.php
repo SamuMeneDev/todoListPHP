@@ -26,3 +26,5 @@ Route::get("/home", [TarefaController::class, 'index']);
 Route::get('/cadastro', [UsuarioController::class, 'create']);
 
 Route::post("/cadastroUsuario", [UsuarioController::class, 'store']);
+
+Route::post("/cadastroTarefa", [TarefaController::class, 'store']);

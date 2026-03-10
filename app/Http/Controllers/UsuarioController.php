@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categoria;
 use App\Models\Tarefa;
 use Illuminate\Http\Request;
 
@@ -36,8 +37,9 @@ class UsuarioController extends Controller
         $usuario->senha_usuario = $request->senha;
         
         $usuario->save();
+        $categorias = Categoria::all();
         $tarefas = Tarefa::all();
-        return view("home")->with("tarefas", $tarefas);
+        return redirect("/home");
     }
 
     /**

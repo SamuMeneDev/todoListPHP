@@ -31,7 +31,17 @@ class TarefaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tarefa = new Tarefa();
+
+        $tarefa->titulo_tarefa =$request->titulo;
+        $tarefa->descricao_tarefa =$request->descricao;
+        $tarefa->data_inicio_tarefa =$request->dataInicio;
+        $tarefa->id_status_tarefa = 1;
+
+        $tarefa->save();
+
+        return redirect('/home');
+        
     }
 
     /**

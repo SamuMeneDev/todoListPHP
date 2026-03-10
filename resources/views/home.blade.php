@@ -54,26 +54,27 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex flex-col col-span-6 gap-2 p-5">
-                        <h2>Adicione uma Tarefa</h2>
+                    <form action="/cadastroTarefa" method="post" class="flex flex-col col-span-6 gap-2 p-5">
+                    @csrf    
+                    <h2>Adicione uma Tarefa</h2>
                         <!-- INPUT NOME TAREFA -->
                         <div class="flex border border-stone-300 gap-1 p-1 rounded-xl">
                             <i class="bi bi-bullseye"></i>
-                            <input placeholder="Nome da Tarefa" type="text" class="w-full outline-none">
+                            <input placeholder="Nome da Tarefa" name="titulo" type="text" class="w-full outline-none">
                         </div>
-                        <textarea placeholder="Descrição da tarefa" class="min-h-32 border p-1 outline-none border-stone-300 rounded-xl">
+                        <textarea placeholder="Descrição da tarefa" name="descricao" class="min-h-32 border p-1 outline-none border-stone-300 rounded-xl">
                         </textarea>
                         <div class="flex justify-between">
                             <div class="flex flex-col">
                                 <span>Data de início</span>
-                                <input class="bg-stone-200 border-stone-400 border rounded-md" type="date">
+                                <input name="dataInicio" class="bg-stone-200 border-stone-400 border rounded-md" type="date">
                             </div>
                             <div class="flex flex-col">
                                 <div class="flex">
                                     <input type="checkbox" name="" id="">
                                     <span>Data de término</span>
                                 </div>
-                                <input class="bg-stone-200 border-stone-400 border rounded-md" type="date">
+                                <input name="dataTermino" class="bg-stone-200 border-stone-400 border rounded-md" type="date">
                             </div>
                         </div>
                         <div class="flex flex-col">
@@ -82,15 +83,15 @@
                                     <span>Categoria</span>
                                     <input type="checkbox" name="" id="">
                                 </div>
-                                <select class="border p-1 rounded-md border-stone-400 bg-stone-200">
+                                <select name="categoria" class="border p-1 rounded-md border-stone-400 bg-stone-200">
                                     @foreach($categorias as $cat)
                                         <option>{{$cat->nome_categoria}}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
-                        <button class="cursor-pointerointer p-1 bg-sky-500 border border-sky-800 rounded-md text-white">Criar Tarefa</button>
-                    </div>
+                        <button type="submit" class="cursor-pointerointer p-1 bg-sky-500 border border-sky-800 rounded-md text-white">Criar Tarefa</button>
+                    </form>
                 </div>
             </div>
         </div>
