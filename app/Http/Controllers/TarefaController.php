@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 use App\Models\Tarefa;
+use Carbon\Carbon;
 
 class TarefaController extends Controller
 {
@@ -44,6 +45,24 @@ class TarefaController extends Controller
         
     }
 
+    public function save(Request $request) {
+        $tarefa = new Tarefa();
+
+        $tarefa->titulo_tarefa = $request->titulo;
+        $tarefa->descricao_tarefa = $request->descricao;
+        $tarefa->data_inicio_tarefa = $request->inicio;
+        $tarefa->data_termino_tarefa = $request->termino;
+        $tarefa->id_usuario = $request->idUsuario;
+        $tarefa->id_categoria = $request->idCategoria;
+        $tarefa->id_status_tarefa = $request->idStatusTarefa;
+        $tarefa->created_at = date('Y-m-d H:i:s');
+        $tarefa->updated_at = date('Y-m-d H:i:s');
+
+        $tarefa->save();
+        return response()->json(["message"=>"Tarefa criada com sucesso"],200);
+
+    }
+
     /**
      * Display the specified resource.
      */
@@ -52,6 +71,10 @@ class TarefaController extends Controller
         //
     }
 
+    public function findAll() {
+        $lista = Tarefa::all();
+        return $lista;
+    }
     /**
      * Show the form for editing the specified resource.
      */
