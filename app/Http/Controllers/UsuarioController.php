@@ -41,7 +41,19 @@ class UsuarioController extends Controller
         $tarefas = Tarefa::all();
         return redirect("/home");
     }
+    public function save(Request $request) {
+        $usuario = new Usuario();
+        $usuario->nome_usuario = $request->nome;
+        $usuario->email_usuario = $request->email;
+        $usuario->senha_usuario = $request->senha;
+        $usuario->created_at = date('Y-m-d H:i:s');
+        $usuario-> updated_at = date('Y-m-d H:i:s');
 
+        $usuario->save();
+        return response()->json(
+            ['message'=>"Usuario cadastrado com sucesso"], 200
+        );
+    }
     /**
      * Display the specified resource.
      */
@@ -49,7 +61,10 @@ class UsuarioController extends Controller
     {
         //
     }
-
+    public function findAll() {
+        $lista = Usuario::all();
+        return $lista;
+    }
     /**
      * Show the form for editing the specified resource.
      */
