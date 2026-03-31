@@ -15,18 +15,19 @@ use Illuminate\Support\Facades\Route;
 */
 use App\Http\Controllers\TarefaController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Middleware\Authenticate;
 
 Route::get('/', [LoginController::class, 'index']);
-Route::get('/login', [LoginController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->name("login");
 Route::post("/login", [LoginController::class, "login"]);
+Route::get("/logout", [LoginController::class, 'logout']);
 
-
-Route::get("/home", [TarefaController::class, 'index']);
+Route::get("/home", [TarefaController::class, 'index'])->middleware(Authenticate::class);
 
 Route::get('/cadastroUsuario', [UsuarioController::class, 'create']);
 
 Route::post("/cadastroUsuario", [UsuarioController::class, 'store']);
 
-Route::get("/cadastrarTarefa", [TarefaController::class, 'create']);
+Route::get("/cadastrarTarefa", [TarefaController::class, 'create'])->middleware(Authenticate::class);
 
-Route::post("/cadastrarTarefa", [TarefaController::class, 'store']);
+Route::post("/cadastrarTarefa", [TarefaController::class, 'store'])->middleware(Authenticate::class);

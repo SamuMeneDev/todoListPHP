@@ -13,9 +13,13 @@
                 <i class="bi bi-list-task"></i>
                 <h2>Todo List</h2>
             </div>
-            <div class="flex text-xl gap-5 items-center">
-                <span class="text-white font-normal">@yield('username')</span>
-               
+            <div class="flex items-center text-white font-normal gap-5">
+                <div class="flex gap-5 items-center">
+                    <span class="">@yield('username')</span>
+                </div>
+                <div class=" gap-5 items-center">
+                    <a class="bg-red-500 px-1 rounded-md border border-red-800" href="/logout">Sair</a>
+                </div>
             </div>
         </div>
     </header>
