@@ -9,21 +9,9 @@ use Illuminate\Http\Request;
 use App\Models\Usuario;
 class UsuarioController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        $tarefas = Usuario::all("tarefa");
-        return view('home')->with('home', $tarefas);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        return view("cadastro.cadastrarUsuario");
+        return view("cadastrarUsuario");
     }
 
     /**
@@ -37,9 +25,7 @@ class UsuarioController extends Controller
         $usuario->senha_usuario = $request->senha;
         
         $usuario->save();
-        $categorias = Categoria::all();
-        $tarefas = Tarefa::all();
-        return redirect("/home");
+        return redirect("/login");
     }
     public function save(Request $request) {
         $usuario = new Usuario();
@@ -54,38 +40,9 @@ class UsuarioController extends Controller
             ['message'=>"Usuario cadastrado com sucesso"], 200
         );
     }
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+
     public function findAll() {
         $lista = Usuario::all();
         return $lista;
-    }
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 use App\Models\Tarefa;
+use App\Models\Usuario;
 use Carbon\Carbon;
 
 class TarefaController extends Controller
@@ -12,7 +13,7 @@ class TarefaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Usuario $usuario)
     {
         $categorias = Categoria::all();
         $tarefas = Tarefa::all();
