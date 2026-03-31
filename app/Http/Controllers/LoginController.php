@@ -25,7 +25,7 @@ class LoginController extends Controller
             }
         }
         if($alvo != null) {
-            return redirect()->route("home", ["usuario"=>$alvo]);
+            return redirect()->action([TarefaController::class, 'index'], ["usuario"=> $u]);
         } else {
             return view("login");
         }

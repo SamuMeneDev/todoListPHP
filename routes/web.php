@@ -23,8 +23,10 @@ Route::post("/login", [LoginController::class, "login"]);
 
 Route::get("/home", [TarefaController::class, 'index']);
 
-Route::get('/cadastro', [UsuarioController::class, 'create']);
+Route::get('/cadastroUsuario', [UsuarioController::class, 'create']);
 
 Route::post("/cadastroUsuario", [UsuarioController::class, 'store']);
 
-Route::post("/cadastroTarefa", [TarefaController::class, 'store']);
+Route::get("/cadastrarTarefa", [TarefaController::class, 'create']);
+
+Route::post("/cadastrarTarefa", [TarefaController::class, 'store']);
