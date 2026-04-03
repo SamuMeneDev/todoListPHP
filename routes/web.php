@@ -19,15 +19,15 @@ use App\Http\Middleware\Authenticate;
 
 Route::get('/', [LoginController::class, 'index']);
 Route::get('/login', [LoginController::class, 'index'])->name("login");
-Route::post("/login", [LoginController::class, "login"]);
+Route::post("/logar", [LoginController::class, "login"]);
 Route::get("/logout", [LoginController::class, 'logout']);
 
-Route::get("/home", [TarefaController::class, 'index'])->middleware(Authenticate::class);
+Route::get("/home", [TarefaController::class, 'index'])->middleware('auth');
 
 Route::get('/cadastroUsuario', [UsuarioController::class, 'create']);
 
 Route::post("/cadastroUsuario", [UsuarioController::class, 'store']);
 
-Route::get("/cadastrarTarefa", [TarefaController::class, 'create'])->middleware(Authenticate::class);
+Route::get("/cadastrarTarefa", [TarefaController::class, 'create'])->middleware('auth');
 
-Route::post("/cadastrarTarefa", [TarefaController::class, 'store'])->middleware(Authenticate::class);
+Route::post("/cadastrarTarefa", [TarefaController::class, 'store'])->middleware('auth');

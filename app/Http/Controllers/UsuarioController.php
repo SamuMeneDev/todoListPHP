@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categoria;
-use App\Models\Tarefa;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-use App\Models\Usuario;
+use Illuminate\Support\Facades\Hash;
+
 class UsuarioController extends Controller
 {
     public function create()
@@ -19,19 +19,19 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        $usuario = new Usuario();
-        $usuario->nome_usuario = $request->nome;
-        $usuario->email_usuario = $request->email;
-        $usuario->senha_usuario = $request->senha;
+        $usuario = new User();
+        $usuario->nome = $request->nome;
+        $usuario->email = $request->email;
+        $usuario->senha = Hash::make($request->senha);
         
         $usuario->save();
         return redirect("/login");
     }
     public function save(Request $request) {
-        $usuario = new Usuario();
-        $usuario->nome_usuario = $request->nome;
-        $usuario->email_usuario = $request->email;
-        $usuario->senha_usuario = $request->senha;
+        $usuario = new User();
+        $usuario->nome = $request->nome;
+        $usuario->email = $request->email;
+        $usuario->senha = Hash::make($request->senha);
         $usuario->created_at = date('Y-m-d H:i:s');
         $usuario-> updated_at = date('Y-m-d H:i:s');
 
@@ -42,7 +42,7 @@ class UsuarioController extends Controller
     }
 
     public function findAll() {
-        $lista = Usuario::all();
+        $lista = User::all();
         return $lista;
     }
 }

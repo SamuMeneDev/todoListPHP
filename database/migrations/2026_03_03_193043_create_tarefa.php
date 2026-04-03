@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string("descricao_tarefa");
             $table->dateTime("data_inicio_tarefa");
             $table->dateTime("data_termino_tarefa");
-            $table->foreignId("id_usuario")->constrained("usuario", "id_usuario");
+            $table->foreignId("id_usuario")->constrained("users", "id");
             $table->foreignId("id_categoria")->constrained("categoria", "id_categoria");
             $table->foreignId("id_status_tarefa")->constrained("status_tarefa", "id_status_tarefa");
             $table->timestamps();

@@ -15,7 +15,7 @@
             </div>
             <div class="flex text-xl gap-5 items-center">
                 <a href="/login" class="text-white font-normal">Entrar</a>
-                <a href="/cadastro" class="p-1.5 border text-sky-500 bg-white font-normal rounded-lg">Criar Conta</a>
+                <a href="/cadastroUsuario" class="p-1.5 border text-sky-500 bg-white font-normal rounded-lg">Criar Conta</a>
             </div>
         </div>
     </header>

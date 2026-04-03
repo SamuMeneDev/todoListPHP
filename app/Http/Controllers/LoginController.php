@@ -16,13 +16,15 @@ class LoginController extends Controller
 
     public function login(Request $request) {
 
-        if(Auth::attempt($request->only(['email_usuario', 'senha_usuario']))) {
-            return redirect("/home");
+        if(Auth::attempt(['email'=>$request->email, 'password'=>$request->senha])) {
+            return redirect()->intended("/home");
         } else {
-            
             return redirect("/login");
         }
+   
     }
+   
+    
     public function logout() {
         Auth::logout();
         return redirect("/login");

@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 use App\Models\Tarefa;
+use App\Models\User;
 use App\Models\Usuario;
 use Carbon\Carbon;
 
 class TarefaController extends Controller
 {
-    public function index(Usuario $usuario)
+    public function index(User $usuario)
     {
         return view("home");
     }
