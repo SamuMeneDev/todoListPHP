@@ -23,7 +23,7 @@
                 
                 @inject('tarefas', 'App\Models\Tarefa')
                 @if(count($tarefas::all()) > 0)
-                @foreach($tarefas as $t)
+                @foreach($tarefas::all() as $t)
                     <div class="grid grid-cols-12 border w-[90%] border-stone-400 p-1 rounded-xl bg-stone-200">
                         <div class="flex col-span-9">
                             <div class="flex gap-3">

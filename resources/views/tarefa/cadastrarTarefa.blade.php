@@ -17,15 +17,15 @@
             <span>Data de início</span>
             <input required name="dataInicio" class="bg-stone-200 border-stone-400 border rounded-md" type="date">
         </div>
-        {{-- 
+        
             <div class="flex flex-col">
             <div class="flex">
-                <input type="checkbox" name="" id="">
+
                 <span>Data de término</span>
             </div>
             <input name="dataTermino" class="bg-stone-200 border-stone-400 border rounded-md" type="date">
         </div>    
-        --}}
+        
         <div class="flex flex-col gap-2 items-center justify-center">
             <div class="flex gap-1">
                 <span>Categoria</span>

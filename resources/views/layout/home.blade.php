@@ -17,9 +17,12 @@
                 <div class="flex gap-5 items-center">
                     <span class="">@yield('username')</span>
                 </div>
-                <div class=" gap-5 items-center">
-                    <a class="bg-red-500 px-1 rounded-md border border-red-800" href="/logout">Sair</a>
-                </div>
+                <form class="gap-5 items-center" action="{{ route('logout') }}" method="post">
+                    @csrf
+                    <button class="cursor-pointer bg-red-500 px-1 rounded-md border border-red-800">
+                        Sair
+                    </button >
+                </form>
             </div>
         </div>
     </header>

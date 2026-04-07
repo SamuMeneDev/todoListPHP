@@ -20,14 +20,17 @@ use App\Http\Middleware\Authenticate;
 Route::get('/', [LoginController::class, 'index']);
 Route::get('/login', [LoginController::class, 'index'])->name("login");
 Route::post("/logar", [LoginController::class, "login"]);
-Route::get("/logout", [LoginController::class, 'logout']);
+Route::post("/logout", [LoginController::class, 'logout'])->name("logout");
 
-Route::get("/home", [TarefaController::class, 'index'])->middleware('auth');
+
+Route::middleware(['auth'])->group(function() {
+    Route::get("/home", [TarefaController::class, 'index']);
+    Route::get("/cadastrarTarefa", [TarefaController::class, 'create']);
+    Route::post("/cadastrarTarefa", [TarefaController::class, 'store']);
+
+});
 
 Route::get('/cadastroUsuario', [UsuarioController::class, 'create']);
 
 Route::post("/cadastroUsuario", [UsuarioController::class, 'store']);
 
-Route::get("/cadastrarTarefa", [TarefaController::class, 'create'])->middleware('auth');
-
-Route::post("/cadastrarTarefa", [TarefaController::class, 'store'])->middleware('auth');

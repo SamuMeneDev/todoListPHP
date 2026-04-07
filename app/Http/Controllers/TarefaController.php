@@ -8,6 +8,7 @@ use App\Models\Tarefa;
 use App\Models\User;
 use App\Models\Usuario;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class TarefaController extends Controller
 {
@@ -21,10 +22,12 @@ class TarefaController extends Controller
     public function store(Request $request)
     {
         $tarefa = new Tarefa();
-
+        $tarefa->id_usuario = Auth::id();
         $tarefa->titulo_tarefa =$request->titulo;
+        $tarefa->id_categoria = $request->categoria;
         $tarefa->descricao_tarefa =$request->descricao;
         $tarefa->data_inicio_tarefa =$request->dataInicio;
+        $tarefa->data_termino_tarefa = $request->dataTermino;
         $tarefa->id_status_tarefa = 1;
 
         $tarefa->save();
