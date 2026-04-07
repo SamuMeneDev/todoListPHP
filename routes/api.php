@@ -29,6 +29,10 @@ Route::get("usuario/findAll", [UsuarioController::class, "findAll"]);
 
 Route::post("usuario/save", [UsuarioController::class, "save"]);
 
+Route::put("/usuario/edit/{id}", [UsuarioController::class, 'editApi']);
+
+Route::delete("/usuario/delete/{id}", [UsuarioController::class, 'deleteApi']);
+
 /* CATEGORIA */
 
 Route::get("/categoria/findAll", [CategoriaController::class, "findAll"]);
@@ -37,10 +41,12 @@ Route::post("/categoria/save", [CategoriaController::class, "save"]);
 
 /* TAREFAS */
 
-Route::get("/tarefa/findAll", [TarefaController::class, "findAll"]);
-Route::post("/tarefa/save", [TarefaController::class, "save"]);
+Route::get("/tarefa/findAll", [TarefaController::class, "findAllApi"]);
+Route::post("/tarefa/save", [TarefaController::class, "saveApi"]);
 
+Route::put("/tarefa/edit/{id}", [TarefaController::class, "editApi"]);
+Route::delete("/tarefa/destroy/{id}", [TarefaController::class, "destroyApi"]);
 /* STATUS TAREFA */
 
-Route::get("/status/findAll", [StatusTarefaController::class, "findAll"]);
-Route::post("/status/save", [StatusTarefaController::class, "save"]);
+Route::get("/status/findAll", [StatusTarefaController::class, "findAllApi"]);
+Route::post("/status/save", [StatusTarefaController::class, "saveApi"]);

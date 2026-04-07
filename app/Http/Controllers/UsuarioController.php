@@ -45,4 +45,22 @@ class UsuarioController extends Controller
         $lista = User::all();
         return $lista;
     }
+
+    public function editApi(Request $request, string $id) {
+        $usuario = User::findOrFail($id);
+        $usuario->nome = $request->nome;
+        
+        $usuario->save();
+
+        return response()->json(
+            ['message'=>"Usuario editado com sucesso"], 200
+        );
+    }
+
+    public function deleteApi(string $id) {
+        User::find($id, "id")->delete();
+        return response()->json(
+            ['message'=>"Usuario excluido com sucesso"], 200
+        );
+    }
 }

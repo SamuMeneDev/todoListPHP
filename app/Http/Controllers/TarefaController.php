@@ -51,22 +51,8 @@ class TarefaController extends Controller
         
     }
 
-    public function save(Request $request) {
-        $tarefa = new Tarefa();
-
-        $tarefa->titulo_tarefa = $request->titulo;
-        $tarefa->descricao_tarefa = $request->descricao;
-        $tarefa->data_inicio_tarefa = $request->inicio;
-        $tarefa->data_termino_tarefa = $request->termino;
-        $tarefa->id_usuario = $request->idUsuario;
-        $tarefa->id_categoria = $request->idCategoria;
-        $tarefa->id_status_tarefa = $request->idStatusTarefa;
-        $tarefa->created_at = date('Y-m-d H:i:s');
-        $tarefa->updated_at = date('Y-m-d H:i:s');
-
-        $tarefa->save();
-        return response()->json(["message"=>"Tarefa criada com sucesso"],200);
-
+    public function concluido() {
+        return view("concluido");
     }
 
     public function destroy(string $id) {
@@ -89,13 +75,46 @@ class TarefaController extends Controller
         }
         return redirect('/home');
     }
-    public function findAll() {
+    public function findAllApi() {
         $lista = Tarefa::all();
         return $lista;
     }
 
+    public function saveApi(Request $request) {
+        $tarefa = new Tarefa();
 
-    public function concluido() {
-        return view("concluido");
+        $tarefa->titulo_tarefa = $request->titulo;
+        $tarefa->descricao_tarefa = $request->descricao;
+        $tarefa->data_inicio_tarefa = $request->inicio;
+        $tarefa->data_termino_tarefa = $request->termino;
+        $tarefa->id_usuario = $request->idUsuario;
+        $tarefa->id_categoria = $request->idCategoria;
+        $tarefa->id_status_tarefa = $request->idStatusTarefa;
+        $tarefa->created_at = date('Y-m-d H:i:s');
+        $tarefa->updated_at = date('Y-m-d H:i:s');
+
+        $tarefa->save();
+        return response()->json(["message"=>"Tarefa criada com sucesso"],200);
+    }
+
+    public function editApi(Request $request, string $id) {
+
+        $tarefa = Tarefa::findOrFail($id);
+
+        $tarefa->titulo_tarefa = $request->titulo;
+        $tarefa->descricao_tarefa = $request->descricao;
+        $tarefa->data_inicio_tarefa = $request->inicio;
+        $tarefa->data_termino_tarefa = $request->termino;
+        $tarefa->id_categoria = $request->idCategoria;
+        $tarefa->id_status_tarefa = $request->idStatusTarefa;
+        
+        $tarefa->save();
+
+         return response()->json(["message"=>"Tarefa editada com sucesso"],200);
+    }
+
+    public function destroyApi(string $id) {
+        $tarefa = Tarefa::find($id, "id_tarefa")->delete();
+        return response()->json(["message"=>"Tarefa excluida com sucesso"],200);
     }
 }
