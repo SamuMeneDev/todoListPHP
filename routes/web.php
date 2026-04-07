@@ -27,7 +27,7 @@ Route::middleware(['auth'])->group(function() {
     Route::get("/home", [TarefaController::class, 'index']);
     Route::get("/cadastrarTarefa", [TarefaController::class, 'create']);
     Route::post("/cadastrarTarefa", [TarefaController::class, 'store']);
-
+    Route::get("/home/concluido", [TarefaController::class, 'concluido']);
 });
 Route::delete("/tarefa/{id}", [TarefaController::class, 'destroy'])->name("tarefa.destroy");
 

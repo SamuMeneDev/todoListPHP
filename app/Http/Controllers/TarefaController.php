@@ -95,5 +95,7 @@ class TarefaController extends Controller
     }
 
 
-
+    public function concluido() {
+        return view("concluido");
+    }
 }
