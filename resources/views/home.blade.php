@@ -30,14 +30,14 @@ use Illuminate\Support\Facades\Auth;
                 @inject('status', 'App\Models\StatusTarefa')
                 @if(count($tarefas::all()) > 0)
                 @foreach($tarefas::all() as $t)
-                    @if($t->id_status_tarefa != $status::find("Pendente", "status_tarefa"))
+                    @if($t->id_status_tarefa == $status::where("status_tarefa", "Pendente")->first())
                         <div class="flex flex-col w-[85%]">
                             <span>{{explode(" ", $t->data_inicio_tarefa)[0]}}</span>
                             <div class="grid grid-cols-12 border border-stone-400 p-1 rounded-xl bg-stone-200">
                                 <div class="flex col-span-10">
                                     <div class="flex gap-3 items-center">
                                 
-                                        <form  action="" method="post">
+                                        <form  action="{{route('tarefa.toggleTarefa', $t->id_tarefa)}}" method="post">
                                             @csrf
                                             @method("PUT")    
                                             <button type="submit"><i class="bi bi-check"></i></button>

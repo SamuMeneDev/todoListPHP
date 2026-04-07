@@ -75,15 +75,18 @@ class TarefaController extends Controller
     }
 
     public function toggleTarefa(string $id) {
-        $tarefa = Tarefa::find($id, "id_tarefa");
-
-        if(StatusTarefa::find($tarefa->id_status_tarefa, "id_status_tarefa") == "Pendente") {
-            $tarefa->id_status_tarefa = StatusTarefa::find("Ativa", "status_tarefa")->id_status_tarefa;
-        } else {
-            $tarefa->id_status_tarefa = StatusTarefa::find("Pendente", "status_tarefa")->id_status_tarefa;
+        $lista = Tarefa::all();
+        foreach($lista as $item) {
+            if($item->id_tarefa == $id) {
+                if($item->id_status_tarefa != StatusTarefa::where("status_tarefa", "Finalizada")->first()->id_status_tarefa) {
+                    $item->id_status_tarefa = StatusTarefa::where("status_tarefa", "Finalizada")->first()->id_status_tarefa;
+                } else {
+                    $item->id_status_tarefa = StatusTarefa::where("status_tarefa", "Pendente")->first()->id_status_tarefa;
+                }
+                $item->save();
+                break;
+            }
         }
-        $tarefa->save();
-
         return redirect('/home');
     }
     public function findAll() {
