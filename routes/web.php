@@ -29,6 +29,9 @@ Route::middleware(['auth'])->group(function() {
     Route::post("/cadastrarTarefa", [TarefaController::class, 'store']);
 
 });
+Route::delete("/tarefa/{id}", [TarefaController::class, 'destroy'])->name("tarefa.destroy");
+
+Route::put("/tarefa/{id}", [TarefaController::class, "toggleTarefa"])->name("tarefa.toggleTarefa");
 
 Route::get('/cadastroUsuario', [UsuarioController::class, 'create']);
 

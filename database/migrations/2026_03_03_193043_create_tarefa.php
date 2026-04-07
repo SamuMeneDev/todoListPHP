@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('tarefa', function (Blueprint $table) {
             $table->id("id_tarefa");
             $table->string("titulo_tarefa");
-            $table->string("descricao_tarefa");
+            $table->string("descricao_tarefa")->nullable(true);
             $table->dateTime("data_inicio_tarefa");
-            $table->dateTime("data_termino_tarefa");
+            $table->dateTime("data_termino_tarefa")->nullable(true);
             $table->foreignId("id_usuario")->constrained("users", "id");
-            $table->foreignId("id_categoria")->constrained("categoria", "id_categoria");
+            $table->foreignId("id_categoria")->nullable(true)->constrained("categoria", "id_categoria");
             $table->foreignId("id_status_tarefa")->constrained("status_tarefa", "id_status_tarefa");
             $table->timestamps();
         });
