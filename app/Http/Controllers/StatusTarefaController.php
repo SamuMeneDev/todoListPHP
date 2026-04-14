@@ -30,7 +30,7 @@ class StatusTarefaController extends Controller
     {
         //
     }
-    public function save(Request $request) {
+    public function saveApi(Request $request) {
         $status = new StatusTarefa();
 
         $status->status_tarefa = $request->nome;
