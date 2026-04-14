@@ -50,7 +50,7 @@ class StatusTarefaController extends Controller
         //
     }
 
-    public function findAll() {
+    public function findAllApi() {
         $lista = StatusTarefa::all();
         return $lista;
     }

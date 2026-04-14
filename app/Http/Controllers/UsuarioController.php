@@ -27,7 +27,7 @@ class UsuarioController extends Controller
         $usuario->save();
         return redirect("/login");
     }
-    public function save(Request $request) {
+    public function saveApi(Request $request) {
         $usuario = new User();
         $usuario->nome = $request->nome;
         $usuario->email = $request->email;
@@ -41,7 +41,7 @@ class UsuarioController extends Controller
         );
     }
 
-    public function findAll() {
+    public function findAllApi() {
         $lista = User::all();
         return $lista;
     }

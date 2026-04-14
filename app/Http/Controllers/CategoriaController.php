@@ -26,7 +26,7 @@ class CategoriaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function save(Request $request)
+    public function saveApi(Request $request)
     {
         $categoria = new Categoria();
 
@@ -38,7 +38,7 @@ class CategoriaController extends Controller
         return response()->json(["messagem"=> "Categoria criada com sucesso"], 200);
     }
 
-    public function findAll() {
+    public function findAllApi() {
         $lista = Categoria::all();
 
         return $lista;

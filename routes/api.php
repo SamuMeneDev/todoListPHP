@@ -25,9 +25,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 /* USUARIO */
-Route::get("usuario/findAll", [UsuarioController::class, "findAll"]);
+Route::get("usuario/findAll", [UsuarioController::class, "findAllApi"]);
 
-Route::post("usuario/save", [UsuarioController::class, "save"]);
+Route::post("usuario/save", [UsuarioController::class, "saveApi"]);
 
 Route::put("/usuario/edit/{id}", [UsuarioController::class, 'editApi']);
 
@@ -35,9 +35,9 @@ Route::delete("/usuario/delete/{id}", [UsuarioController::class, 'deleteApi']);
 
 /* CATEGORIA */
 
-Route::get("/categoria/findAll", [CategoriaController::class, "findAll"]);
+Route::get("/categoria/findAll", [CategoriaController::class, "findAllApi"]);
 
-Route::post("/categoria/save", [CategoriaController::class, "save"]);
+Route::post("/categoria/save", [CategoriaController::class, "saveApi"]);
 
 /* TAREFAS */
 
